@@ -1,15 +1,15 @@
 import React from 'react';
-import Button from './Button';
-function App() {
-  return (
-    <div>
-      <h1>MFE1</h1>
-      <Button>
-        {' '}
-        MFE1 Button
-      </Button>
-    </div>
-  );
-}
+import './App.css';
+
+const Mfe1Button = React.lazy(() => import('MFE1/Button'));
+
+const App = () => (
+  <div className='App'>
+    MFE2
+    <React.Suspense fallback='Loading Button'>
+      <Mfe1Button />
+    </React.Suspense>
+  </div>
+);
 
 export default App;

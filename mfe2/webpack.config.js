@@ -3,13 +3,13 @@ const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPl
 module.exports = {
   mode: 'development',
   devServer: {
-    port: 8082,
+    port: 3002,
   },
   module: {
     rules: [
       {
         test: /\.css$/i,
-        use: ["css-loader"],
+        use: ['css-loader'],
       },
       {
         /* The following line to ask babel 
@@ -20,8 +20,7 @@ module.exports = {
             Babel will not compile any files in this directory*/
         exclude: /node_modules/,
         // To Use babel Loader
-        loader:
-          'babel-loader',
+        loader: 'babel-loader',
         options: {
           presets: [
             '@babel/preset-env' /* to transfer any advansed ES to ES5 */,
@@ -32,20 +31,16 @@ module.exports = {
     ],
   },
   plugins: [
-    new ModuleFederationPlugin(
-      {
-        name: 'MFE2',
-        filename:
-          'remoteEntry.js',
-        remotes: {
-          MFE1:
-            'MFE1@http://localhost:8083/remoteEntry.js',
-        },
-      }
-    ),
+    new ModuleFederationPlugin({
+      name: 'MFE1',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './Button': './src/Button',
+      },
+      shared: { react: { singleton: true }, 'react-dom': { singleton: true } },
+    }),
     new HtmlWebpackPlugin({
-      template:
-        './public/index.html',
+      template: './public/index.html',
     }),
   ],
 };
