@@ -3,8 +3,8 @@ import Button from './Button';
 
 const App = () => (
   <div>
-    <h1>MFE1</h1>
-    <Button> MFE1 Button</Button>
+    <h1>MFE2</h1>
+    <Button> MFE2 Button</Button>
   </div>
 );
 
