@@ -1,29 +1,20 @@
 {
   "name": "module-federation-examples-root",
   "version": "0.0.0",
-  "description": "Examples showcasing Webpack 5's Module Federation",
-  "repository": "https://github.com/module-federation/module-federation-examples.git",
-  "author": "Zack Jackson <zackary.l.jackson@gmail.com> (https://github.com/ScriptedAlchemy)",
-  "license": "MIT",
-  "private": true,
   "workspaces": {
-    "nohoist": [
-      "**/svelte",
-      "**/svelte/**",
-      "**/svelte-loader",
-      "**/svelte-loader/**"
+    "packages": [
+      "app1",
+      "app2"
     ]
   },
-  "devDependencies": {
-    "lerna": "3.22.1",
-    "prettier": "2.2.1"
-  },
+  "private": true,
   "scripts": {
-    "bootstrap": "lerna bootstrap --ignore-scripts",
-    "build": "lerna run --parallel build",
-    "submodules": "git pull --recurse-submodules",
-    "prettier": "prettier --write \"**/*.{js,json,md,ts,tsx}\"",
-    "prettier:check": "prettier --list-different \"**/*.{js,json,md,ts,tsx}\"",
-    "test": "jest test/index.spec.js --maxWorkers=2"
+    "start": "lerna run --scope @typescript/* --parallel start",
+    "build": "lerna run --scope @typescript/* build",
+    "serve": "lerna run --scope @typescript/* --parallel serve",
+    "clean": "lerna run --scope @typescript/* --parallel clean"
+  },
+  "devDependencies": {
+    "lerna": "3.22.1"
   }
 }
