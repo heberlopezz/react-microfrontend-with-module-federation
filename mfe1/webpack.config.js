@@ -32,10 +32,10 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'MFE2',
+      name: 'MFE1',
       filename: 'remoteEntry.js',
       remotes: {
-        MFE1: 'MFE1@http://localhost:3002/remoteEntry.js',
+        MFE1: 'MFE2@http://localhost:3002/remoteEntry.js',
       },
       shared: { react: { singleton: true }, 'react-dom': { singleton: true } },
     }),

@@ -32,10 +32,11 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'MFE1',
+      name: 'MFE2',
       filename: 'remoteEntry.js',
       exposes: {
         './Button': './src/Button',
+        './Text': './src/Text',
       },
       shared: { react: { singleton: true }, 'react-dom': { singleton: true } },
     }),
